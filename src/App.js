@@ -11,17 +11,12 @@ function App() {
 	const [score, setScore] = useState(0);
   const [index, setIndex] = useState(0);
 
-  const handleAnswerOptionClick = (isCorrect) => {
-    // console.log(ans);
-      // if (ans === data[index].correctIndex) {
-      //   setScore(score+1);
-      // };
-      // setIndex(index + 1);
-      // console.log(index);
-      // console.log(data[index].correctIndex);
-      if (isCorrect) {
-        setScore(score + 1);
-      }
+  const handleAnswerOptionClick = (ans) => {
+      if (ans === data[index].correctIndex) {
+        setScore(score+1);
+      };
+      setIndex(index + 1);
+
 		const nextQuestion = currentQuestion + 1;
 		if (nextQuestion < data.length) {
 			setCurrentQuestion(nextQuestion);
@@ -49,8 +44,8 @@ function App() {
               {data[currentQuestion].answers.map((answerOption,index) => (
                 <button 
                 className='btn btn-primary rounded-pill m-1 border border-3 border-warning fs-5'
-                onClick={() => handleAnswerOptionClick(answerOption.isCorrect)} key= {index}>
-                  {answerOption.answerText}
+                onClick={() => handleAnswerOptionClick(index)} key= {index}>
+                  {answerOption}
                 </button>
 						  ))}
               </div>
